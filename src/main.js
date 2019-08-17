@@ -6,10 +6,20 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+export const globalStore = new Vue({
+  data:{
+    ItemData : [
+      {
+        name: "hey", description: "never", price:"$4.88"
+    }
+    ]
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   components: { App },
-  template: '<App/>'
+  template: '<App/>',
+ 
 })
