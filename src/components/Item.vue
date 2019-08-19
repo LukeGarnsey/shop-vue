@@ -1,7 +1,9 @@
 <template>
     <div>
+        <h2>Product: {{ item.product }} </h2>
         <p>Name: {{ item.name }} </p>
-        <p>Description: {{ item.description }} </p>
+        <p>Type: {{ item.type }} </p>
+        <p>Color: {{ item.color }} </p>
         <p>Price (USD): {{ item.price }} </p>
     </div>
 </template>
@@ -13,9 +15,11 @@ export default {
     data(){
         return{
             item:{
-                name: this.$route.params.id,
-                description: "Totally Simple to look at item.",
-                price: globalStore.ItemData[0].price
+                name: "",
+                type: "",
+                price: "",
+                color: "",
+                product: ""
             }
         }
     },
@@ -24,8 +28,11 @@ export default {
     },
     methods:{
         update(){
-            this.item.name = this.$route.params.id
+            this.item = globalStore.ItemData.find(x=> x.id == this.$route.params.id);
         }
+    },
+    beforeMount(){
+        this.update()
     }
 }
 </script>

@@ -1,20 +1,44 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import faker from 'faker'
+import uuid from 'uuid/v4';
+import vuetify from './plugins/vuetify';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-export const globalStore = new Vue({
-  data:{
+var globalStore = new Vue({
+  data: {
     ItemData : [
       {
-        name: "hey", description: "never", price:"$4.88"
+        name: faker.commerce.productName(), description: uuid().substring(0, 8), price: faker.commerce.price()
+      }
+      ]
+  },
+
+  vuetify,
+
+  methods: {
+    GenerateData: function (amount) {
+      this.ItemData = [];
+      for(var i = 0; i<amount; i++){
+        this.ItemData.push(
+            {
+              id: uuid().substring(0, 8),
+              name : faker.commerce.productName(),
+              color: faker.commerce.color(),
+              price: faker.commerce.price(),
+              type: faker.commerce.productAdjective(),
+              product: faker.commerce.product()
+
+            }
+        );
+      }
     }
-    ]
   }
-})
+});
+globalStore.GenerateData(100);
+export { globalStore };
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -23,3 +47,5 @@ new Vue({
   template: '<App/>',
  
 })
+
+
