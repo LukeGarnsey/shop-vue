@@ -1,36 +1,30 @@
 <template>
-  <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-app-bar>
-
-    <v-content>
-      <HelloWorld/>
-    </v-content>
-  </v-app>
+  <div id="app">
+    <img src="./assets/logo.png">
+    <item-list></item-list>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+import ItemList from './components/ItemList'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld,
+    'item-list': ItemList
   },
   data: () => ({
-    //
-  }),
-};
+    
+  })
+}
 </script>
+<style scoped>
+div{
+  background: black;
+}
+</style>
+
