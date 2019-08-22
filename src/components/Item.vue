@@ -1,38 +1,22 @@
 <template>
-    <b-container id="temp" @mouseover="mouseOver" @mouseout="mouseOut" :style="IsHover" class="text-center">
+    <reaction-container id="temp" class="text-center">
         <h2>Product: {{ item.product }} </h2>
         <p>Name: {{ item.name }} </p>
         <p>Type: {{ item.type }} </p>
         <p>Color: {{ item.color }} </p>
         <p>Price (USD): {{ item.price }} </p>
-    </b-container>
+    </reaction-container>
 </template>
 <script>
 import {globalStore} from '../main.js'
+import ReactionContainer from './utils/ReactionContainer'
 
 export default {
   props: {
    item: {} 
   },
-  data () {
-    return {
-      backgroundColor: 'black'
-    }
-  },
-  computed: {
-    IsHover () {
-     return {
-       backgroundColor: this.backgroundColor
-     }
-    }
-  },
-  methods: {
-    mouseOver () {
-      this.backgroundColor = 'white'
-    },
-    mouseOut () {
-      this.backgroundColor = 'black'
-    }
+  components: {
+  'reaction-container': ReactionContainer
   }
 }
 </script>
@@ -41,5 +25,4 @@ export default {
   height: 250px;
   color: grey;
 }
-
 </style>
