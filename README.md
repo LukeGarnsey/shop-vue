@@ -1,6 +1,6 @@
 # shop-vue
 
-> test shop
+> test shop built to utlize VueJs framework.
 
 ## Build Setup
 
